@@ -26,7 +26,16 @@ def compile_italic_underscore(line):
     >>> compile_italic_underscore('')
     ''
     '''
-    return line
+    parts = line.split('_')
+    result = parts[0]
+    for i in range(1, len(parts)):
+        if i % 2 == 0:
+            result += '</i>' + parts[i]
+        elif i + 1 < len(parts):
+            result += '<i>' + parts[i]
+        else:
+            result += '_' + parts[i]
+    return result
 
 
 def compile_bold_stars(line):
@@ -50,7 +59,16 @@ def compile_bold_stars(line):
     >>> compile_bold_stars('***')
     '***'
     '''
-    return line
+    parts = line.split('**')
+    result = parts[0]
+    for i in range(1, len(parts)):
+        if i % 2 == 0:
+            result += '</b>' + parts[i]
+        elif i + 1 < len(parts):
+            result += '<b>' + parts[i]
+        else:
+            result += '**' + parts[i]
+    return result
 
 
 def compile_links(line):
@@ -76,4 +94,13 @@ def compile_links(line):
     >>> compile_links('nothing here](oops)')
     'nothing here](oops)'
     '''
-    return line
+    result = ''
+    while True:
+        start = line.find('[')
+        mid = line.find('](', start)
+        end = line.find(')', mid)
+        if -1 in (start, mid, end):
+            return result + line
+        result += line[:start] + '<a href="' + line[mid + 2:end] + '">'
+        result += line[start + 1:mid] + '</a>'
+        line = line[end + 1:]
