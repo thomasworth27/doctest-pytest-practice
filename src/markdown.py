@@ -3,6 +3,7 @@ All the functions in this file convert markdown syntax into html.
 Implementing these functions will give you practice learning the correct markdown syntax.
 '''
 
+
 def compile_italic_underscore(line):
     '''
     Convert "_italic_" into "<i>italic</i>".

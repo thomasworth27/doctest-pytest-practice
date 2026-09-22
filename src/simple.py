@@ -5,6 +5,7 @@ Your solutions should use the map and filter functions,
 and not for loops or list comprehensions.
 '''
 
+
 def evens(n):
     '''
     Returns a list of even numbers from 0 to n inclusive.
@@ -22,6 +23,7 @@ def evens(n):
     '''
     return list(filter(lambda x: x % 2 == 0, range(n + 1)))
 
+
 def threes(n):
     '''
     Returns a list of all numbers from 0 to n inclusive that contain the digit 3.
@@ -38,6 +40,7 @@ def threes(n):
     [3, 13, 23, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 43]
     '''
     return list(filter(lambda x: '3' in str(x), range(n + 1)))
+
 
 def small_words(text):
     '''
@@ -57,6 +60,7 @@ def small_words(text):
     '''
     return list(filter(lambda w: len(w) < 5, text.split()))
 
+
 def squares(n):
     '''
     Returns a list of all square number between 1 and n inclusive.
@@ -72,6 +76,7 @@ def squares(n):
     [1, 4, 9, 16, 25, 36, 49, 64, 81, 100]
     '''
     return list(map(lambda x: x * x, range(1, n + 1)))
+
 
 def lengths(strings):
     '''
